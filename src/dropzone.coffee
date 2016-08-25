@@ -638,6 +638,9 @@ class Dropzone extends Emitter
         document.querySelector(@options.hiddenInputContainer).appendChild @hiddenFileInput
         @hiddenFileInput.addEventListener "change", =>
           files = @hiddenFileInput.files
+          # HACK: emitting drop here even though the file hasn't been dropped
+          # We are also emitting the drop event with different args to what it usually has
+          @emit "drop", files
           @addFile file for file in files if files.length
           @emit "addedfiles", files
           setupHiddenFileInput()
