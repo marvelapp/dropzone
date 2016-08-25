@@ -584,6 +584,7 @@
             return _this.hiddenFileInput.addEventListener("change", function() {
               var file, files, _i, _len;
               files = _this.hiddenFileInput.files;
+              _this.emit("drop", files);
               if (files.length) {
                 for (_i = 0, _len = files.length; _i < _len; _i++) {
                   file = files[_i];
